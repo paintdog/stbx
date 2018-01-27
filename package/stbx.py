@@ -94,7 +94,22 @@ def kursliste2schuelerliste(kursliste, nurklausur=False):
     for line in ausgabe_str.split("\n"):
         print(line)
 
-    
+
+def kursliste2schuelerliste2(kursliste, nurklausur=False):
+    kursliste = kursliste.replace("AB3 X", "_KLAUSUR_").replace("AB4 X", "_KLAUSUR_").replace("GKS X", "_KLAUSUR_").replace("GKM", "")
+    for line in kursliste.split("\n"):
+
+        if nurklausur:
+            if "_KLAUSUR_" in line:
+                line = line.replace("_KLAUSUR_", "")
+                nachname, vornamen = line.split(". ")[1].split(", ")
+                print(vornamen.strip(" "), nachname.strip(" "))
+        else:
+            line = line.replace("_KLAUSUR_", "")
+            nachname, vornamen = line.split(". ")[1].split(", ")
+            print(vornamen.strip(" "), nachname.strip(" "))
+
+
 def nachname_vorname2vorname_nachname(namensliste):
     # "Nachname, Vorname" --> "Vorname Nachname"
     namensliste = namensliste.split("\n")
@@ -169,6 +184,24 @@ if __name__ == "__main__":
 
 
     """
+    Test der Funktion kursliste2schuelerliste2()
+    ===========================================
+
+    Wie zuvor, diese Funktion ist etwas robuster und
+    hat weniger logische Probleme. Etwaige überzählige
+    Vornamen sind von Hand zu entfernen.
+    """
+    print("\n\nTest der Funktion kursliste2schuelerliste2()")
+
+    kursliste = """1. Broderick, Matthew von AB3 X
+    2. Coleman, Dabney Wharton van GKM
+    3. Wood, John GKS X
+    4. Sheedy, Alexandra Elizabeth GKM
+    5. Corbin, Leonard Barry AB4 X"""
+    kursliste2schuelerliste2(kursliste, nurklausur=False)
+
+
+    """
     Test der Funktion nachname_vorname2vorname_nachname()
     =====================================================
     
@@ -184,6 +217,3 @@ if __name__ == "__main__":
                      Sheedy, Ally
                      Corbin, Barry"""
     nachname_vorname2vorname_nachname(namensliste)
-
-
-

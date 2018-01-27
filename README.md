@@ -4,7 +4,7 @@
 
 * get_daten_fuers_kursheft() -- Daten fürs Kursheft erhalten (Mo., 29.01. DS usw.)
 
-* get_notenstufen() -- Notenstufen erhalten (1+, 1, 1 usw.)
+* get_notenstufen() -- Notenstufen erhalten (1+, 1, 1- usw.)
 
 * klassenspiegel_erzeugen() -- Klassenspiegel ausgeben
 

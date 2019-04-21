@@ -18,6 +18,6 @@ for stufe in prozente:
 
     letzter_wert = neuer_wert - 1
 
-print("{}-{}".format(letzter_wert - 1, 0))
+print("{}-{}".format(letzter_wert, 0))
 
 
